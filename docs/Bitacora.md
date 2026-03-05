@@ -31,17 +31,11 @@ Cuando acabes no olvides ayudarnos evaluando tu ⭐[experiencia](https://forms.o
 
 **DOMINIO:** https://sergio-idarraga-t-app.obs-stack.eci-idp.click/api/
 
-La aplicación corrió sin problema, cuando se clono el repositorio solo se tuvo que instalar todas las dependencias.
 
 ### 1.3. Observaciones y problemas encontrados (opcional)
 
-```
+La aplicación corrió sin problema, cuando se clono el repositorio solo se tuvo que instalar todas las dependencias.
 
-
-
-```
-
----
 
 ## Etapa 2: Métricas Iniciales
 
@@ -49,33 +43,27 @@ La aplicación corrió sin problema, cuando se clono el repositorio solo se tuvo
 
 **Endpoints probados:**
 
-- [ ] `GET /api/`
-- [ ] `POST /api/shorten`
-- [ ] `GET /api/{shortCode}`
-- [ ] `GET /api/urls`
+- [X] `GET /api/`
+- [X] `POST /api/shorten`
+- [X] `GET /api/{shortCode}`
+- [X] `GET /api/urls`
 
 
 ### 2.0.2. Análisis de dos métricas relevantes
 
 #### Métrica 1
 
-**Nombre de la métrica:**  
-```
-
-```
+**Nombre de la métrica:** http_server_requests_seconds summary 
 
 **Tipo de métrica:** 
 - [ ] Counter
 - [ ] Gauge 
 - [ ] Histogram 
-- [ ] Summary
+- [X] Summary
 
 **Descripción de qué información aporta:**
-```
 
-
-
-```
+**1** Esta métrica representa el tiempo en cual se tarde en realizar la petición HTTP. Se mide en segundos y permite analizar el comportamiento y rendimiento de cada endpoint de la aplicación.
 
 **Relación con otras métricas (si aplica):**
 ```
@@ -103,14 +91,13 @@ Ejemplo: uri, method, status, instance, job, etc.
 
 #### Métrica 2
 
-**Nombre de la métrica:**  
-```
+**Nombre de la métrica:** http_server_requests_seconds_max gauge
 
-```
-
+Esta métrica indica el mayor tiempo de respuesta registrado para una solicitud HTTP en un endpoint específico.
+A diferencia de la métrica anterior, que muestra datos acumulados, esta representa la latencia máxima observada.
 **Tipo de métrica:** 
 - [ ] Counter
-- [ ] Gauge 
+- [X] Gauge 
 - [ ] Histogram 
 - [ ] Summary
 
