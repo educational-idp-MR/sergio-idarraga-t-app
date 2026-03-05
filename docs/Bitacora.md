@@ -22,12 +22,16 @@ Cuando acabes no olvides ayudarnos evaluando tu ⭐[experiencia](https://forms.o
 
 **¿La aplicación se desplegó correctamente?** 
 
-- [ ] Sí
+- [X] Sí
 - [ ] No
 
-**Captura de pantalla de la aplicación funcionando:**
+<div align="center">
+  <img src="img/dominio.png" alt="dominio" style="max-width: 400px; display: block; margin: 0 auto;" />
+</div>
 
-> _[Inserta aquí la imagen de la aplicación corriendo en /api/]_
+**DOMINIO:** https://sergio-idarraga-t-app.obs-stack.eci-idp.click/api/
+
+La aplicación corrió sin problema, cuando se clono el repositorio solo se tuvo que instalar todas las dependencias.
 
 ### 1.3. Observaciones y problemas encontrados (opcional)
 
