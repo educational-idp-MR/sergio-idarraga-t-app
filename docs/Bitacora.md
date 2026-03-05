@@ -25,9 +25,7 @@ Cuando acabes no olvides ayudarnos evaluando tu ⭐[experiencia](https://forms.o
 - [X] Sí
 - [ ] No
 
-<div align="center">
-  <img src="img/dominio.png" alt="dominio" style="max-width: 400px; display: block; margin: 0 auto;" />
-</div>
+<img src="../img/dominio.png" alt="dominio" style="max-width: 400px; display: block; margin: 0 auto;" />
 
 **DOMINIO:** https://sergio-idarraga-t-app.obs-stack.eci-idp.click/api/
 
@@ -284,120 +282,47 @@ Ejemplo: url_shortener_urls_created_total
 
 ### Visualización en Grafana
 
+
 **1. ¿Qué tipo de panel usaste en Grafana?**
 
 - [ ] Time series  
-- [ ] Gauge  
+- [X] Gauge  
 - [ ] Stat  
 - [ ] Bar chart  
 - [ ] Otro: _____
 
 **2. ¿Qué consulta PromQL vas a utilizar?**
 ```promql
+Latencia máxima por URI y método (en segundos)
+max by (uri, method) (
+  http_server_requests_seconds_max{applicationName="sergio-idarraga-t-app-monitoring"}
+)
 
+
+Tasa de peticiones por segundo por URI y método
+sum by (uri, method) (
+  rate(http_server_requests_seconds_count{applicationName="sergio-idarraga-t-app-monitoring"}[1m])
+)
 
 
 ```
 
 **3. ¿Cuál es el propósito de la visualización?**
 ```
-Provee una interpretación en palabras con el propósito de la visualización. Que te interesa ver en el panel?
-
-
-
+El panel busca mostrar la latencia observada por endpoint (URI) y método, poniendo énfasis en la latencia máxima registrada para identificar los casos más lentos que afectan la experiencia del usuario. La métrica de tasa de peticiones (requests/s) se muestra junto a la latencia para correlacionar aumentos de tráfico con posibles degradaciones del rendimiento. Esto facilita la detección rápida de endpoints que requieren optimización o que presentan picos de latencia bajo carga, y sirve como entrada para definir umbrales y alertas (por ejemplo: latencia máxima > 1.0s sostenida). Se recomienda usar segundos como unidad y mostrar el endpoint peor (topk(1)) en un Gauge, y la tasa/latencia promedio en un Time series para análisis temporal.
 ```
 
 ---
 
-### Panel creado en Grafana
+<div align="center">
+  <img src="img/dashboard1.png" alt="dashboard1" style="max-width: 400px; display: block; margin: 0 auto;" />
+</div>
 
-**Captura de pantalla del panel en Grafana:**
-
-> _[Inserta aquí la imagen del panel mostrando la métrica visualizada]_
-
----
+<div align="center">
+  <img src="img/dashboard2.png" alt="dashboard2" style="max-width: 400px; display: block; margin: 0 auto;" />
+</div>
 
 ## Etapa 3: Experimentación y Análisis del Sistema
 
-### 3.1. Detección de anomalías y puntos de interés
+En esta sección documenta las pruebas de carga, escenarios ejecutados, resultados observados y conclusiones. Incluye gráficos, tablas y observaciones relevantes sobre cómo el sistema respondió bajo diferentes patrones de tráfico.
 
-**1. Como describirias la anomalía?**
-
-```
-
-
-```
-
-**2. Que paneles te ayudaron a identificarlo?**
-
-``` 
-
-
-```
-
-**3. Cual podria ser la causa de la anomalía?**
-
-``` 
-
-
-```
-
-**Captura de pantalla del dashboard mostrando la anomalía:**
-
-> _[Inserta aquí la imagen]_
-
----
-
-### 3.2. Intento de corrección de anomalías
-
-
-#### 3.2.1. Modificación del código
-
-**Descripción del ajuste realizado:**
-```
-Describe en pocas palabras el ajuste realizado.
-
-
-
-
-```
-
-#### 3.2.2. Resultados después del despliegue
-
-**¿El ajuste surtió efecto?**
-- [ ] Sí 
-- [ ] No 
-- [ ] Parcialmente
-
-
-**Captura de pantalla del dashboard después del ajuste:**
-
-> _[Inserta aquí la imagen del estado del dashboard posterior al ajuste]_
-
----
-
-### 5.7. Reflexión final
-
-**¿Qué panel te resultó más útil para detectar problemas?**
-```
-
-
-
-```
-
-**¿Qué métrica aporta mayor valor para monitorear un sistema real?**
-```
-
-
-
-```
-
-**¿Qué agregarías o mejorarías en tu dashboard?**
-```
-
-
-
-
-```
-
-**Fin de la bitácora**

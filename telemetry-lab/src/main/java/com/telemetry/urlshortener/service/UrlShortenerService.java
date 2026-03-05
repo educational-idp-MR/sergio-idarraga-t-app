@@ -23,12 +23,17 @@ public class UrlShortenerService {
     private final Random random = new Random();
 
     private final Counter dummyCounter;
+    private final Counter shortenCounter;
 
     public UrlShortenerService(MeterRegistry meterRegistry) {
         logger.info("UrlShortenerService initialized with in-memory storage");
         this.dummyCounter = Counter.builder("dummyCounter")
                 .description("dummy description")
                 .register(meterRegistry);
+        
+        this.shortenCounter = Counter.builder("urls_shortened_total")
+        .description("Total number of URLs shortened")
+        .register(meterRegistry);
     }
 
     private void simulateLatency() {
@@ -59,7 +64,7 @@ public class UrlShortenerService {
 
         UrlMapping mapping = new UrlMapping(shortCode, originalUrl);
         urlStorage.put(shortCode, mapping);
-
+        shortenCounter.increment();
         logger.info("URL shortened - Code: {}, Original URL: {}", shortCode, originalUrl);
         return mapping;
     }
